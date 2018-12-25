@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import Input from './components/form'
+
 const Wrapper = styled.div`
-  background: #f4f4f4;
+  background: #0984e3;
   width: 100%;
   height: 100vh;
   position: relative;
-`
+`;
 const Box = styled.div`
   width: 300px;
   height: 300px;
@@ -16,14 +18,17 @@ const Box = styled.div`
   margin-top: -150px;
   margin-right: -150px;
   background: #ffffff;
-`
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+`;
+
 
 class App extends Component {
   render() {
     return (
       <Wrapper>
         <Box>
-          Hello
+          <Input />
         </Box>
       </Wrapper>
     );
