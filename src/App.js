@@ -24,11 +24,24 @@ const Box = styled.div`
 
 
 class App extends Component {
+  state = {
+    list : ''
+  };
+
   render() {
+    const list = this.state.list;
+
     return (
       <Wrapper>
         <Box>
           <Input />
+          {Object.keys(list).map(key => {
+            return(
+              <ul>
+                <li key={key}>{list}</li>
+              </ul>
+            )
+          })}
         </Box>
       </Wrapper>
     );
