@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
 `
 
 const InputText = styled.input`
@@ -25,9 +25,19 @@ const Button = styled.input`
 
 class Input extends Component {
   render() {
+    function updateInput (event) {
+      
+    }
+
+    const addlist = function (event) {
+      event.preventDefault();
+      
+      console.log(event);
+    }
+
     return <Wrapper>
-        <InputText type="text" />
-        <Button type="submit" value="Add" />
+        <InputText type="text" onChange={updateInput}/>
+      <Button type="submit" value="Add" onClick={addlist}/>
       </Wrapper>;
   }
 }
