@@ -1,51 +1,36 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import List from "./components/List";
 
-import Input from './components/form'
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      term: "",
+      items: []
+    };
+  }
 
-const Wrapper = styled.div`
-  background: #0984e3;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-`;
-const Box = styled.div`
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  margin-top: -150px;
-  margin-right: -150px;
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-`;
+  onChange = event => {
+    this.setState({ term: event.target.value });
+  };
 
-
-class App extends Component {
-  state = {
-    list : ''
+  onSubmit = event => {
+    event.preventDefault();
+    this.setState({
+      term: "",
+      items: [...this.state.items, this.state.term]
+    });
   };
 
   render() {
-    const list = this.state.list;
-
     return (
-      <Wrapper>
-        <Box>
-          <Input />
-          {Object.keys(list).map(key => {
-            return(
-              <ul>
-                <li key={key}>{list}</li>
-              </ul>
-            )
-          })}
-        </Box>
-      </Wrapper>
+      <div>
+        <form className="App" onSubmit={this.onSubmit}>
+          <input value={this.state.term} onChange={this.onChange} />
+          <button>Submit</button>
+        </form>
+        <List items={this.state.items} />
+      </div>
     );
   }
 }
-
-export default App;
